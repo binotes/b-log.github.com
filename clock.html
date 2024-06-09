@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前日期时间</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 2em;
+        }
+        #time {
+            font-size: 3em;
+        }
+        .date {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+    <div id="date" class="date"></div>
+
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            var timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            var dateString = now.toLocaleDateString('zh-CN', dateOptions);
+            var timeString = now.toLocaleTimeString('zh-CN', timeOptions);
+            document.getElementById('date').textContent = dateString;
+            document.getElementById('time').textContent = timeString;
+        }
+
+        // 初始加载
+        updateDateTime();
+
+        // 每秒更新一次
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
